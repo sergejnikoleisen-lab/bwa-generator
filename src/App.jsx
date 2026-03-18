@@ -140,7 +140,7 @@ export default function App() {
       const res = await fetch("/api/generate", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ model: "claude-sonnet-4-20250514", max_tokens: 1000, messages })
+        body: JSON.stringify({ model: "claude-sonnet-4-20250514", max_tokens: 6000, messages })
       });
       const data = await res.json();
       setReport(data.content?.[0]?.text || "Fehler beim Generieren.");
