@@ -523,6 +523,18 @@ export default function App() {
           </div>
         )}
       </div>
+
+      {/* Footer */}
+      <div style={{ borderTop: "1px solid #e2e8f0", background: "#fff", padding: "24px 32px", textAlign: "center", marginTop: 20 }}>
+        <p style={{ fontSize: 12, color: "#9aa5b4", fontFamily: "system-ui,sans-serif", margin: "0 0 6px" }}>
+          © 2026 Sergej Nikoleisen · BWA-Generator
+        </p>
+        <div style={{ display: "flex", justifyContent: "center", gap: 20, flexWrap: "wrap" }}>
+          <a href="/impressum" style={{ color: "#1a4fd6", textDecoration: "none", fontWeight: 600, fontSize: 13 }}>Impressum</a>
+          <a href="/datenschutz" style={{ color: "#1a4fd6", textDecoration: "none", fontWeight: 600, fontSize: 13 }}>Datenschutz</a>
+          <a href="/agb" style={{ color: "#1a4fd6", textDecoration: "none", fontWeight: 600, fontSize: 13 }}>AGB</a>
+        </div>
+      </div>
     </div>
   );
 }
