@@ -8,7 +8,16 @@ const TONES = [
   { id: "investorenfokus", label: "Investorenfokus" },
 ];
 
-const PERIODS = ["Q1 2025","Q2 2025","Q3 2025","Q4 2025","Geschäftsjahr 2025","Geschäftsjahr 2024"];
+const PERIODS = [
+  "Q1 2026","Q2 2026","Q3 2026","Q4 2026",
+  "Januar 2026","Februar 2026","März 2026","April 2026","Mai 2026","Juni 2026",
+  "Juli 2026","August 2026","September 2026","Oktober 2026","November 2026","Dezember 2026",
+  "Geschäftsjahr 2026",
+  "Q1 2025","Q2 2025","Q3 2025","Q4 2025",
+  "Januar 2025","Februar 2025","März 2025","April 2025","Mai 2025","Juni 2025",
+  "Juli 2025","August 2025","September 2025","Oktober 2025","November 2025","Dezember 2025",
+  "Geschäftsjahr 2025","Geschäftsjahr 2024"
+];
 const INDUSTRIES = ["Technologie / Software","Handel / E-Commerce","Produktion / Industrie","Dienstleistungen","Immobilien","Gesundheit / Medizin","Gastronomie / Hotellerie","Bauwesen"];
 const REPORT_TYPES = ["Quartalsreport (kompakt)","Jahresabschluss (detailliert)","Investoren-Update","Management-Zusammenfassung","Bankgespräch Vorbereitung"];
 
@@ -313,6 +322,53 @@ export default function App() {
                 <button onClick={resetFile} style={{ background: "none", border: "1px solid #c7d8fb", borderRadius: 6, padding: "4px 10px", fontSize: 12, color: "#6b7c99", cursor: "pointer" }}>✕</button>
               </div>
             )}
+          </div>
+        )}
+
+        {/* Unternehmensdaten für Upload Mode */}
+        {mode === "upload" && (
+          <div style={{ background: "#fff", border: "1.5px solid #e2e8f0", borderRadius: 14, padding: 22, marginBottom: 16, boxShadow: "0 1px 4px rgba(0,0,0,0.05)" }}>
+            <div style={{ fontSize: 11, fontFamily: "monospace", letterSpacing: "0.1em", textTransform: "uppercase", color: "#9aa5b4", marginBottom: 16 }}>Unternehmensdaten</div>
+            <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 12 }}>
+              <div style={{ display: "flex", flexDirection: "column", gap: 5 }}>
+                <label style={{ fontSize: 12, color: "#6b7c99", fontWeight: 600 }}>Unternehmensname</label>
+                <input style={inp} placeholder="z.B. Müller GmbH" value={form.company} onChange={e => set("company", e.target.value)} />
+              </div>
+              <div style={{ display: "flex", flexDirection: "column", gap: 5 }}>
+                <label style={{ fontSize: 12, color: "#6b7c99", fontWeight: 600 }}>Berichtszeitraum</label>
+                <select style={inp} value={form.period} onChange={e => set("period", e.target.value)}>
+                  {PERIODS.map(p => <option key={p}>{p}</option>)}
+                </select>
+              </div>
+              <div style={{ display: "flex", flexDirection: "column", gap: 5, gridColumn: "1/-1" }}>
+                <label style={{ fontSize: 12, color: "#6b7c99", fontWeight: 600 }}>Branche</label>
+                <select style={inp} value={form.industry} onChange={e => set("industry", e.target.value)}>
+                  {INDUSTRIES.map(i => <option key={i}>{i}</option>)}
+                </select>
+              </div>
+            </div>
+          </div>
+        )}
+
+        {/* Kontext für Upload Mode */}
+        {mode === "upload" && (
+          <div style={{ background: "#fffbeb", border: "2px solid #fbbf24", borderRadius: 14, padding: 22, marginBottom: 16, boxShadow: "0 2px 8px rgba(251,191,36,0.15)" }}>
+            <div style={{ display: "flex", alignItems: "center", gap: 8, marginBottom: 12 }}>
+              <span style={{ fontSize: 18 }}>⚠️</span>
+              <div style={{ fontSize: 12, fontFamily: "monospace", letterSpacing: "0.08em", textTransform: "uppercase", color: "#92400e", fontWeight: 700 }}>Wichtig — Kontext angeben</div>
+            </div>
+            <p style={{ fontSize: 13, color: "#78350f", lineHeight: 1.6, margin: "0 0 12px", fontFamily: "system-ui,sans-serif" }}>
+              Je mehr Kontext du angibst, desto präziser und wertvoller wird dein Report. Erwähne besondere Ereignisse, Veränderungen oder Ziele im Berichtszeitraum.
+            </p>
+            <textarea value={form.context} onChange={e => set("context", e.target.value)} placeholder="z.B. Neukunde gewonnen (+80.000 € Jahresumsatz), Produktlaunch im März, 2 neue Mitarbeiter eingestellt, unerwartete Maschinenreparatur (12.000 €), Ziel: Bankgespräch vorbereiten..." style={{ background: "#fff", border: "1.5px solid #fcd34d", borderRadius: 8, padding: "12px 14px", color: "#0d1f3c", fontSize: 14, outline: "none", width: "100%", fontFamily: "system-ui,sans-serif", minHeight: 100, resize: "vertical", lineHeight: 1.6, boxSizing: "border-box" }} />
+            <div style={{ display: "flex", gap: 8, marginTop: 10, flexWrap: "wrap" }}>
+              {["Neukunde gewonnen","Produktlaunch","Personalaufbau","Investitionen","Marktveränderung","Bankgespräch"].map(tag => (
+                <button key={tag} onClick={() => set("context", form.context ? form.context + ", " + tag : tag)}
+                  style={{ background: "#fef3c7", border: "1px solid #fcd34d", borderRadius: 100, padding: "4px 12px", fontSize: 12, color: "#92400e", cursor: "pointer", fontFamily: "system-ui,sans-serif", fontWeight: 600 }}>
+                  + {tag}
+                </button>
+              ))}
+            </div>
           </div>
         )}
 
