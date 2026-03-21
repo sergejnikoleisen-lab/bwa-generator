@@ -11,7 +11,7 @@ export default async function handler(req, res) {
   }
 
   const { priceId, mode = 'payment' } = req.body || {};
-  const finalPriceId = priceId || 'price_1TCT6dDzSxUnxOnbCbsa6CKk';
+  const finalPriceId = priceId || 'price_1TDZD4D0HqBbjmyliXljmdkY';
   const origin = req.headers.origin || 'https://bwa-generator.de';
 
   try {
