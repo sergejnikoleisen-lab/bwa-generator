@@ -139,16 +139,20 @@ export default function App() {
               {label}
             </button>
           ))}
+          <a href="/agb" style={{ textDecoration: "none", borderBottom: "3px solid transparent", padding: "14px 20px", fontSize: 14, fontWeight: 400, color: "#6b7c99", display: "block", marginBottom: -1 }}>AGB</a>
         </div>
       </div>
 
       {page === "impressum" ? <Impressum /> : <Datenschutz />}
 
       {/* Footer */}
-      <div style={{ borderTop: "1px solid #e2e8f0", background: "#fff", padding: "20px 32px", textAlign: "center" }}>
-        <p style={{ fontSize: 12, color: "#9aa5b4", fontFamily: "system-ui,sans-serif", margin: 0 }}>
-          © 2026 Sergej Nikoleisen · <button onClick={() => setPage("impressum")} style={{ background: "none", border: "none", color: "#1a4fd6", cursor: "pointer", fontSize: 12, fontFamily: "system-ui,sans-serif" }}>Impressum</button> · <button onClick={() => setPage("datenschutz")} style={{ background: "none", border: "none", color: "#1a4fd6", cursor: "pointer", fontSize: 12, fontFamily: "system-ui,sans-serif" }}>Datenschutz</button>
-        </p>
+      <div style={{ borderTop: "1px solid #e2e8f0", background: "#fff", padding: "24px 32px", textAlign: "center" }}>
+        <p style={{ fontSize: 12, color: "#9aa5b4", fontFamily: "system-ui,sans-serif", margin: "0 0 6px" }}>© 2026 Sergej Nikoleisen · BWA-Generator</p>
+        <div style={{ display: "flex", justifyContent: "center", gap: 20 }}>
+          <button onClick={() => setPage("impressum")} style={{ background: "none", border: "none", color: "#1a4fd6", cursor: "pointer", fontSize: 13, fontFamily: "system-ui,sans-serif", fontWeight: 600 }}>Impressum</button>
+          <button onClick={() => setPage("datenschutz")} style={{ background: "none", border: "none", color: "#1a4fd6", cursor: "pointer", fontSize: 13, fontFamily: "system-ui,sans-serif", fontWeight: 600 }}>Datenschutz</button>
+          <a href="/agb" style={{ color: "#1a4fd6", textDecoration: "none", fontWeight: 600, fontSize: 13 }}>AGB</a>
+        </div>
       </div>
     </div>
   );
