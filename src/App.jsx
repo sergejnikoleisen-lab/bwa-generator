@@ -205,7 +205,7 @@ export default function App() {
       });
       const data = await res.json();
       if (data.url) window.location.href = data.url;
-      else setStatus("Fehler beim Erstellen der Checkout-Session.");
+      else setStatus(data.error || "Fehler beim Erstellen der Checkout-Session.");
     } catch (e) {
       setStatus("Fehler: " + e.message);
     }
