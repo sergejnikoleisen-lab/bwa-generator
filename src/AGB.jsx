@@ -58,7 +58,7 @@ export default function AGB() {
           <Section num="2" title="Leistungsbeschreibung">
             <P>Der BWA-Generator ist ein KI-gestützter Dienst zur automatischen Erstellung von Finanzreports auf Basis von hochgeladenen BWA-Dateien (PDF, Excel, CSV) oder manuell eingegebener Finanzkennzahlen.</P>
             <P><strong>Kostenlose Leistung:</strong> Die manuelle Eingabe von Finanzkennzahlen und die Anzeige des generierten Reports sind kostenlos. Ein PDF-Download ist in der kostenlosen Version nicht enthalten.</P>
-            <P><strong>Kostenpflichtige Leistung:</strong> Das Hochladen einer BWA-Datei und die anschließende KI-Analyse inkl. PDF-Download des Reports ist eine kostenpflichtige Einzelleistung zum Preis von 19,00 € (inkl. MwSt.).</P>
+            <P><strong>Kostenpflichtige Leistung:</strong> Das Hochladen einer BWA-Datei und die anschließende KI-Analyse inkl. PDF-Download des Reports ist eine kostenpflichtige Einzelleistung zum Preis von 19,00 €.</P>
             <P>Die generierten Reports dienen ausschließlich als Informationsgrundlage und stellen keine Steuer-, Rechts- oder Anlageberatung dar.</P>
           </Section>
 
@@ -68,7 +68,7 @@ export default function AGB() {
           </Section>
 
           <Section num="4" title="Preise & Zahlung">
-            <P>Der Preis für die kostenpflichtige BWA-Analyse beträgt <strong>19,00 € (inkl. gesetzlicher MwSt.)</strong> pro Report.</P>
+            <P>Der Preis für die kostenpflichtige BWA-Analyse beträgt <strong>19,00 €</strong> pro Report. Als Kleinunternehmer im Sinne von <strong>§ 19 Abs. 1 UStG</strong> wird keine Umsatzsteuer berechnet und ausgewiesen.</P>
             <P>Die Zahlung erfolgt über den Zahlungsdienstleister Stripe. Akzeptierte Zahlungsmittel sind Kreditkarte (Visa, Mastercard, American Express) sowie weitere von Stripe angebotene Methoden.</P>
             <P>Die Zahlung ist mit Abschluss des Checkout-Vorgangs sofort fällig.</P>
           </Section>
