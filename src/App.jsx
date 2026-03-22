@@ -260,16 +260,77 @@ export default function App() {
       if (fileData.type === "pdf") {
         return [{ role: "user", content: [
           { type: "document", source: { type: "base64", media_type: "application/pdf", data: fileData.content } },
-          { type: "text", text: `Du bist ein erfahrener Finanzanalyst. Analysiere diese BWA und erstelle einen professionellen ${reportType} auf Deutsch. Ton: ${tone}. Struktur: # Titel, ## Executive Summary, ## Umsatz & Ergebnis, ## Kostenstruktur, ## Liquidität, ## Stärken & Risiken, ## Ausblick & Empfehlungen. Nutze **fett** für Zahlen.` }
+          { type: "text", text: `Du bist ein erfahrener Senior-Finanzanalyst und Unternehmensberater mit 20 Jahren Erfahrung. Analysiere diese BWA sehr detailliert und erstelle einen umfassenden, professionellen ${reportType} auf Deutsch. Ton: ${tone}.
+
+Schreibe AUSFÜHRLICH und DETAILLIERT — mindestens 800-1000 Wörter. Gehe tief auf alle Zahlen ein, erkläre Zusammenhänge, identifiziere Trends und gib konkrete Handlungsempfehlungen.
+
+Struktur (jeden Abschnitt ausführlich ausarbeiten):
+# [Aussagekräftiger Titel mit Unternehmensname und Zeitraum]
+## Executive Summary
+## Umsatz- & Ergebnisentwicklung
+## Kostenstruktur & Effizienzanalyse
+## Liquidität & Finanzielle Stabilität
+## Stärken & Risiken
+## Branchenvergleich & Benchmarks
+## Strategische Empfehlungen & Maßnahmenplan
+
+Nutze **fett** für wichtige Zahlen und KPIs. Berechne Kennzahlen wie Marge, Wachstumsrate, Kostenquote etc. selbst aus den Daten.` }
         ]}];
       } else {
-        return [{ role: "user", content: `Du bist ein erfahrener Finanzanalyst. Analysiere diese BWA und erstelle einen professionellen ${reportType} auf Deutsch.\n\nTon: ${tone}\n\nBWA-DATEN:\n${fileData.content}\n\nStruktur: # Titel, ## Executive Summary, ## Umsatz & Ergebnis, ## Kostenstruktur, ## Liquidität, ## Stärken & Risiken, ## Ausblick & Empfehlungen. Nutze **fett** für Zahlen.` }];
+        return [{ role: "user", content: `Du bist ein erfahrener Senior-Finanzanalyst und Unternehmensberater mit 20 Jahren Erfahrung. Analysiere diese BWA-Daten sehr detailliert und erstelle einen umfassenden, professionellen ${reportType} auf Deutsch.
+
+Ton: ${tone}
+
+BWA-DATEN:
+${fileData.content}
+
+Schreibe AUSFÜHRLICH und DETAILLIERT — mindestens 800-1000 Wörter. Gehe tief auf alle Zahlen ein, erkläre Zusammenhänge, identifiziere Trends und gib konkrete Handlungsempfehlungen.
+
+Struktur (jeden Abschnitt ausführlich ausarbeiten):
+# [Aussagekräftiger Titel mit Unternehmensname und Zeitraum]
+## Executive Summary
+## Umsatz- & Ergebnisentwicklung
+## Kostenstruktur & Effizienzanalyse
+## Liquidität & Finanzielle Stabilität
+## Stärken & Risiken
+## Branchenvergleich & Benchmarks
+## Strategische Empfehlungen & Maßnahmenplan
+
+Nutze **fett** für wichtige Zahlen und KPIs. Berechne Kennzahlen wie Marge, Wachstumsrate, Kostenquote etc. selbst aus den Daten.` }];
       }
     } else {
       const { company, period, industry, revenue, revenuePrev, profit, costs, liquidity, employees, context } = form;
       const growth = revenue && revenuePrev ? (((revenue - revenuePrev) / revenuePrev) * 100).toFixed(1) : null;
       const margin = revenue && profit ? ((profit / revenue) * 100).toFixed(1) : null;
-      return [{ role: "user", content: `Du bist ein erfahrener Finanzanalyst. Erstelle einen ${reportType} auf Deutsch.\n\nUnternehmen: ${company || "Musterunternehmen GmbH"} | Branche: ${industry} | Zeitraum: ${period} | Ton: ${tone}\n\nKENNZAHLEN:\n- Umsatz: ${revenue ? fmt(revenue) + " €" : "k.A."}\n- Vorjahr: ${revenuePrev ? fmt(revenuePrev) + " €" : "k.A."}\n- Wachstum: ${growth ? growth + "%" : "k.A."}\n- Gewinn/EBIT: ${profit ? fmt(profit) + " €" : "k.A."}\n- EBIT-Marge: ${margin ? margin + "%" : "k.A."}\n- Kosten: ${costs ? fmt(costs) + " €" : "k.A."}\n- Liquidität: ${liquidity ? fmt(liquidity) + " €" : "k.A."}\n- Mitarbeiter: ${employees || "k.A."}\n\nKONTEXT: ${context || "Keine Besonderheiten."}\n\nStruktur: # Titel, ## Executive Summary, ## Ergebnisentwicklung, ## Kostenstruktur, ## Liquidität, ## Highlights, ## Ausblick & Empfehlungen. Nutze **fett** für Zahlen.` }];
+      return [{ role: "user", content: `Du bist ein erfahrener Senior-Finanzanalyst und Unternehmensberater mit 20 Jahren Erfahrung. Erstelle einen umfassenden, professionellen ${reportType} auf Deutsch.
+
+Unternehmen: ${company || "Musterunternehmen GmbH"} | Branche: ${industry} | Zeitraum: ${period} | Ton: ${tone}
+
+KENNZAHLEN:
+- Umsatz: ${revenue ? fmt(revenue) + " €" : "k.A."}
+- Vorjahr: ${revenuePrev ? fmt(revenuePrev) + " €" : "k.A."}
+- Wachstum: ${growth ? growth + "%" : "k.A."}
+- Gewinn/EBIT: ${profit ? fmt(profit) + " €" : "k.A."}
+- EBIT-Marge: ${margin ? margin + "%" : "k.A."}
+- Kosten: ${costs ? fmt(costs) + " €" : "k.A."}
+- Liquidität: ${liquidity ? fmt(liquidity) + " €" : "k.A."}
+- Mitarbeiter: ${employees || "k.A."}
+
+KONTEXT: ${context || "Keine Besonderheiten."}
+
+Schreibe AUSFÜHRLICH und DETAILLIERT — mindestens 800-1000 Wörter. Gehe tief auf alle Zahlen ein, erkläre Zusammenhänge, berechne weitere Kennzahlen (Kostenquote, Personalkosten pro Mitarbeiter etc.) und gib konkrete Handlungsempfehlungen.
+
+Struktur (jeden Abschnitt ausführlich ausarbeiten):
+# [Aussagekräftiger Titel mit Unternehmensname und Zeitraum]
+## Executive Summary
+## Umsatz- & Ergebnisentwicklung
+## Kostenstruktur & Effizienzanalyse
+## Liquidität & Finanzielle Stabilität
+## Stärken & Risiken
+## Branchenvergleich & Benchmarks
+## Strategische Empfehlungen & Maßnahmenplan
+
+Nutze **fett** für wichtige Zahlen und KPIs.` }];
     }
   };
 
@@ -281,7 +342,7 @@ export default function App() {
       const res = await fetch("/api/generate", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ model: "claude-sonnet-4-20250514", max_tokens: 6000, messages })
+        body: JSON.stringify({ model: "claude-sonnet-4-20250514", max_tokens: 8000, messages })
       });
       const data2 = await res.json();
       setReport(data2.content?.[0]?.text || "Fehler beim Generieren.");
