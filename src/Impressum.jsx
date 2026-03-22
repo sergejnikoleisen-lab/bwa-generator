@@ -51,6 +51,7 @@ function Impressum() {
         </Section>
 
         <Section title="Steuerliche Angaben">
+          <P>Steuernummer: <strong>351/2443/4375</strong></P>
           <P>Gemäß <strong>§ 19 UStG</strong> (Kleinunternehmerregelung) wird keine Umsatzsteuer berechnet und ausgewiesen.</P>
         </Section>
 
