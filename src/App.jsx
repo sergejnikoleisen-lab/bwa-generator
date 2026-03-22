@@ -37,15 +37,112 @@ function fmt(n) {
   return Number(n).toLocaleString("de-DE");
 }
 
-function downloadPDF(text, company) {
-  const content = text.replace(/<[^>]*>/g, '').replace(/&nbsp;/g, ' ');
-  const blob = new Blob([content], { type: 'text/plain;charset=utf-8' });
-  const url = URL.createObjectURL(blob);
-  const a = document.createElement('a');
-  a.href = url;
-  a.download = `Finanzreport_${company || 'Report'}.txt`;
-  a.click();
-  URL.revokeObjectURL(url);
+async function downloadPDF(text, company) {
+  const { jsPDF } = await import('https://esm.sh/jspdf@2.5.1');
+
+  const doc = new jsPDF({ orientation: 'portrait', unit: 'mm', format: 'a4' });
+
+  const pageW = doc.internal.pageSize.getWidth();
+  const pageH = doc.internal.pageSize.getHeight();
+  const margin = 20;
+  const maxW = pageW - margin * 2;
+  let y = margin;
+
+  // Header bar
+  doc.setFillColor(13, 31, 60);
+  doc.rect(0, 0, pageW, 18, 'F');
+  doc.setTextColor(255, 255, 255);
+  doc.setFontSize(10);
+  doc.setFont('helvetica', 'bold');
+  doc.text('BWA.Generator · Finanzreport', margin, 12);
+  doc.setFont('helvetica', 'normal');
+  doc.setFontSize(8);
+  doc.text(`bwa-generator.de`, pageW - margin, 12, { align: 'right' });
+
+  y = 30;
+
+  // Clean markdown
+  const lines = text.split('\n');
+
+  for (let i = 0; i < lines.length; i++) {
+    const line = lines[i];
+
+    if (y > pageH - 25) {
+      doc.addPage();
+      doc.setFillColor(13, 31, 60);
+      doc.rect(0, 0, pageW, 18, 'F');
+      y = 30;
+    }
+
+    if (line.startsWith('# ')) {
+      const title = line.replace(/^# /, '');
+      doc.setFontSize(18);
+      doc.setFont('helvetica', 'bold');
+      doc.setTextColor(13, 31, 60);
+      const wrapped = doc.splitTextToSize(title, maxW);
+      doc.text(wrapped, margin, y);
+      y += wrapped.length * 9 + 4;
+
+    } else if (line.startsWith('## ')) {
+      const title = line.replace(/^## /, '');
+      if (y > 30) {
+        doc.setDrawColor(221, 232, 248);
+        doc.setLineWidth(0.5);
+        doc.line(margin, y, pageW - margin, y);
+        y += 5;
+      }
+      doc.setFontSize(13);
+      doc.setFont('helvetica', 'bold');
+      doc.setTextColor(26, 79, 214);
+      const wrapped = doc.splitTextToSize(title, maxW);
+      doc.text(wrapped, margin, y);
+      y += wrapped.length * 7 + 3;
+
+    } else if (line.startsWith('### ')) {
+      const title = line.replace(/^### /, '');
+      doc.setFontSize(11);
+      doc.setFont('helvetica', 'bold');
+      doc.setTextColor(30, 59, 110);
+      const wrapped = doc.splitTextToSize(title, maxW);
+      doc.text(wrapped, margin, y);
+      y += wrapped.length * 6 + 2;
+
+    } else if (line.startsWith('---')) {
+      doc.setDrawColor(200, 210, 230);
+      doc.setLineWidth(0.3);
+      doc.line(margin, y, pageW - margin, y);
+      y += 5;
+
+    } else if (line.trim() === '') {
+      y += 3;
+
+    } else {
+      // Normal text — strip markdown bold markers
+      const clean = line.replace(/\*\*(.+?)\*\*/g, '$1').replace(/^- /, '• ');
+      doc.setFontSize(10);
+      doc.setFont('helvetica', 'normal');
+      doc.setTextColor(55, 65, 81);
+      const wrapped = doc.splitTextToSize(clean, maxW);
+      doc.text(wrapped, margin, y);
+      y += wrapped.length * 5.5 + 1;
+    }
+  }
+
+  // Footer on all pages
+  const totalPages = doc.internal.getNumberOfPages();
+  for (let p = 1; p <= totalPages; p++) {
+    doc.setPage(p);
+    doc.setFillColor(248, 250, 252);
+    doc.rect(0, pageH - 12, pageW, 12, 'F');
+    doc.setFontSize(8);
+    doc.setFont('helvetica', 'normal');
+    doc.setTextColor(154, 165, 180);
+    doc.text(`© 2026 BWA-Generator · bwa-generator.de`, margin, pageH - 5);
+    doc.text(`Seite ${p} von ${totalPages}`, pageW - margin, pageH - 5, { align: 'right' });
+  }
+
+  const filename = `Finanzreport_${(company || 'Report').replace(/\s/g, '_')}.pdf`;
+  doc.save(filename);
 }
 
 export default function App() {
