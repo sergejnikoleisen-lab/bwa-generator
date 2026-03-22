@@ -54,7 +54,7 @@ async function downloadPDF(text, company) {
   doc.setTextColor(255, 255, 255);
   doc.setFontSize(10);
   doc.setFont('helvetica', 'bold');
-  doc.text('BWA.Generator · Finanzreport', margin, 12);
+  doc.text('BWA-Generator · Finanzreport', margin, 12);
   doc.setFont('helvetica', 'normal');
   doc.setFontSize(8);
   doc.text(`bwa-generator.de`, pageW - margin, 12, { align: 'right' });
@@ -384,7 +384,7 @@ Nutze **fett** für wichtige Zahlen und KPIs.` }];
           <div style={{ width: 34, height: 34, background: "linear-gradient(135deg,#1a4fd6,#0a2d8a)", borderRadius: 9, display: "flex", alignItems: "center", justifyContent: "center", color: "#fff", fontSize: 16, fontWeight: 800 }}>B</div>
           <div>
             <span style={{ fontWeight: 800, fontSize: 16, color: "#0d1f3c", letterSpacing: "-0.02em" }}>BWA</span>
-            <span style={{ color: "#1a4fd6", fontWeight: 800, fontSize: 16 }}>.</span>
+            <span style={{ color: "#1a4fd6", fontWeight: 800, fontSize: 16 }}>-</span>
             <span style={{ fontWeight: 800, fontSize: 16, color: "#0d1f3c", letterSpacing: "-0.02em" }}>Generator</span>
           </div>
         </div>
