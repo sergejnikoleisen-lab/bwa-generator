@@ -6,7 +6,7 @@ const NAV = () => (
       <div style={{ width: 34, height: 34, background: "linear-gradient(135deg,#1a4fd6,#0a2d8a)", borderRadius: 9, display: "flex", alignItems: "center", justifyContent: "center", color: "#fff", fontSize: 16, fontWeight: 800 }}>B</div>
       <div>
         <span style={{ fontWeight: 800, fontSize: 16, color: "#0d1f3c" }}>BWA</span>
-        <span style={{ color: "#1a4fd6", fontWeight: 800, fontSize: 16 }}>.</span>
+        <span style={{ color: "#1a4fd6", fontWeight: 800, fontSize: 16 }}>-</span>
         <span style={{ fontWeight: 800, fontSize: 16, color: "#0d1f3c" }}>Generator</span>
       </div>
     </div>
