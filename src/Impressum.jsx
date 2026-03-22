@@ -50,6 +50,10 @@ function Impressum() {
           <P>Sergej Nikoleisen<br />Annenstr. 2<br />33332 Gütersloh</P>
         </Section>
 
+        <Section title="Steuerliche Angaben">
+          <P>Gemäß <strong>§ 19 UStG</strong> (Kleinunternehmerregelung) wird keine Umsatzsteuer berechnet und ausgewiesen.</P>
+        </Section>
+
         <Section title="Haftungsausschluss">
           <P><strong>Haftung für Inhalte:</strong> Die Inhalte dieser Website wurden mit größter Sorgfalt erstellt. Für die Richtigkeit, Vollständigkeit und Aktualität der Inhalte können wir jedoch keine Gewähr übernehmen. Die durch den KI-generierten Reports erstellten Inhalte dienen ausschließlich als Informationsgrundlage und stellen keine Rechts- oder Steuerberatung dar.</P>
           <P><strong>Haftung für Links:</strong> Unser Angebot enthält Links zu externen Webseiten Dritter, auf deren Inhalte wir keinen Einfluss haben. Für die Inhalte der verlinkten Seiten ist stets der jeweilige Anbieter oder Betreiber der Seiten verantwortlich.</P>
