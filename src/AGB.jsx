@@ -68,7 +68,7 @@ export default function AGB() {
           </Section>
 
           <Section num="4" title="Preise & Zahlung">
-            <P>Der Preis für die kostenpflichtige BWA-Analyse beträgt <strong>19,00 €</strong> pro Report. Als Kleinunternehmer im Sinne von <strong>§ 19 Abs. 1 UStG</strong> wird keine Umsatzsteuer berechnet und ausgewiesen.</P>
+            <P>Der Preis für die kostenpflichtige BWA-Analyse beträgt <strong>19,00 €</strong> pro Report. Als Kleinunternehmer im Sinne von <strong>§ 19 Abs. 1 UStG</strong> wird keine Umsatzsteuer berechnet und ausgewiesen. Steuernummer: 351/2443/4375.</P>
             <P>Die Zahlung erfolgt über den Zahlungsdienstleister Stripe. Akzeptierte Zahlungsmittel sind Kreditkarte (Visa, Mastercard, American Express) sowie weitere von Stripe angebotene Methoden.</P>
             <P>Die Zahlung ist mit Abschluss des Checkout-Vorgangs sofort fällig.</P>
           </Section>
@@ -106,7 +106,8 @@ export default function AGB() {
 
           <div style={{ background: "#f8fafc", border: "1px solid #e2e8f0", borderRadius: 10, padding: "16px 20px", marginTop: 8 }}>
             <div style={{ fontSize: 13, color: "#6b7c99", fontFamily: "system-ui,sans-serif" }}>
-              <strong style={{ color: "#0d1f3c" }}>Kontakt:</strong> Sergej Nikoleisen · Annenstr. 2 · 33332 Gütersloh · <a href="mailto:bwagenerator@gmail.com" style={{ color: "#1a4fd6" }}>bwagenerator@gmail.com</a>
+              <strong style={{ color: "#0d1f3c" }}>Kontakt:</strong> Sergej Nikoleisen · Annenstr. 2 · 33332 Gütersloh · <a href="mailto:bwagenerator@gmail.com" style={{ color: "#1a4fd6" }}>bwagenerator@gmail.com</a><br />
+              Steuernummer: 351/2443/4375 · Kleinunternehmer gem. § 19 UStG – keine MwSt. ausgewiesen.
             </div>
           </div>
 
