@@ -23,6 +23,8 @@ export default async function handler(req, res) {
     params.append('success_url', `${origin}/?paid=true&session_id={CHECKOUT_SESSION_ID}`);
     params.append('cancel_url', `${origin}/?paid=false`);
     params.append('locale', 'de');
+    params.append('automatic_tax[enabled]', 'false');
+    params.append('billing_address_collection', 'auto');
 
     const stripeRes = await fetch('https://api.stripe.com/v1/checkout/sessions', {
       method: 'POST',
