@@ -402,24 +402,38 @@ Nutze **fett** für wichtige Zahlen und KPIs.` }];
       </nav>
 
       {/* Hero */}
-      <div style={{ background: "linear-gradient(160deg,#0d1f3c 0%,#1a3a7a 100%)", padding: "48px 20px 40px", textAlign: "center", position: "relative", overflow: "hidden" }}>
+      <div style={{ background: "linear-gradient(160deg,#0d1f3c 0%,#1a3a7a 100%)", padding: "52px 20px 44px", textAlign: "center", position: "relative", overflow: "hidden" }}>
         <div style={{ position: "absolute", top: 0, left: 0, right: 0, bottom: 0, backgroundImage: "radial-gradient(ellipse at 15% 60%, rgba(26,79,214,0.18) 0%, transparent 55%), radial-gradient(ellipse at 85% 40%, rgba(26,79,214,0.12) 0%, transparent 55%)", pointerEvents: "none" }}></div>
-        <div style={{ position: "relative", zIndex: 1, maxWidth: 600, margin: "0 auto" }}>
+        <div style={{ position: "relative", zIndex: 1, maxWidth: 640, margin: "0 auto" }}>
           <div style={{ display: "inline-flex", alignItems: "center", gap: 6, background: "rgba(26,79,214,0.18)", border: "1px solid rgba(147,180,248,0.3)", borderRadius: 100, padding: "5px 14px", fontSize: 11, color: "#93b4f8", letterSpacing: "0.1em", textTransform: "uppercase", fontFamily: "monospace", marginBottom: 18 }}>
             <span style={{ width: 5, height: 5, background: "#93b4f8", borderRadius: "50%", display: "inline-block" }}></span>
             Powered by Claude AI
           </div>
-          <h1 style={{ fontSize: "clamp(26px,5vw,44px)", fontWeight: 800, color: "#fff", margin: "0 0 12px", letterSpacing: "-0.03em", lineHeight: 1.1 }}>
+          <h1 style={{ fontSize: "clamp(26px,5vw,44px)", fontWeight: 800, color: "#fff", margin: "0 0 16px", letterSpacing: "-0.03em", lineHeight: 1.1 }}>
             Professionelle Finanzreports<br />
             <span style={{ color: "#93b4f8" }}>in Sekunden</span>
           </h1>
-          <p style={{ fontSize: 15, color: "#7a9cc8", margin: "0 auto 28px", lineHeight: 1.7, fontWeight: 300, maxWidth: 460 }}>
-            BWA hochladen oder Kennzahlen manuell eingeben — KI erstellt automatisch einen professionellen Bericht.
+
+          {/* Problem-Solution Text */}
+          <p style={{ fontSize: 15, color: "#7a9cc8", margin: "0 auto 20px", lineHeight: 1.8, fontWeight: 300, maxWidth: 520 }}>
+            Die Auswertung einer BWA kostet Steuerberater & Unternehmer oft <span style={{ color: "#fbbf24", fontWeight: 600 }}>Stunden wertvoller Zeit</span>. Unser KI-Tool analysiert deine BWA in Sekunden und erstellt automatisch einen professionellen Report — mit konkreten Handlungsempfehlungen, Stärken & Risiken und einem klaren Ausblick.
           </p>
 
+          {/* Social Proof */}
+          <div style={{ background: "rgba(255,255,255,0.06)", border: "1px solid rgba(255,255,255,0.1)", borderRadius: 10, padding: "12px 20px", marginBottom: 24, display: "inline-block" }}>
+            <span style={{ fontSize: 13, color: "#93b4f8", fontFamily: "system-ui,sans-serif" }}>
+              💼 Perfekt für <strong style={{ color: "#fff" }}>Steuerberater</strong>, <strong style={{ color: "#fff" }}>Buchhalter</strong> & <strong style={{ color: "#fff" }}>Unternehmer</strong>
+            </span>
+          </div>
+
           {/* Value props */}
-          <div style={{ display: "flex", justifyContent: "center", gap: 24, flexWrap: "wrap" }}>
-            {[["✓","BWA Upload mit PDF-Download","#93b4f8"],["✓","Manuelle Eingabe kostenlos","#6ee7b7"],["✓","5 Berichtstypen & Töne","#93b4f8"]].map(([icon, text, color]) => (
+          <div style={{ display: "flex", justifyContent: "center", gap: 20, flexWrap: "wrap" }}>
+            {[
+              ["✓","BWA Upload mit PDF-Download","#93b4f8"],
+              ["✓","Manuelle Eingabe kostenlos","#6ee7b7"],
+              ["✓","5 Berichtstypen & Töne","#93b4f8"],
+              ["✓","Ergebnis in unter 30 Sekunden","#6ee7b7"],
+            ].map(([icon, text, color]) => (
               <div key={text} style={{ display: "flex", alignItems: "center", gap: 7, fontSize: 13, color }}>
                 <span style={{ fontWeight: 700 }}>{icon}</span><span>{text}</span>
               </div>
