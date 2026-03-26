@@ -25,12 +25,12 @@ const REPORT_TYPES = ["Quartalsreport (kompakt)","Jahresabschluss (detailliert)"
 function renderMd(text) {
   return text
     .replace(/^### (.+)$/gm, '<h3 style="font-size:13px;font-weight:700;margin:20px 0 6px;color:#1e3a6e;text-transform:uppercase;letter-spacing:0.07em;font-family:system-ui,sans-serif">$1</h3>')
-    .replace(/^## (.+)$/gm, '<h2 style="font-size:17px;font-weight:700;margin:26px 0 10px;color:#0d1f3c;border-bottom:2px solid #dde8f8;padding-bottom:8px;font-family:system-ui,sans-serif">$1</h2>')
-    .replace(/^# (.+)$/gm, '<h1 style="font-size:22px;font-weight:800;margin:0 0 16px;color:#0d1f3c;font-family:system-ui,sans-serif">$1</h1>')
+    .replace(/^## (.+)$/gm,  '<h2 style="font-size:17px;font-weight:700;margin:26px 0 10px;color:#0d1f3c;border-bottom:2px solid #dde8f8;padding-bottom:8px;font-family:system-ui,sans-serif">$1</h2>')
+    .replace(/^# (.+)$/gm,   '<h1 style="font-size:22px;font-weight:800;margin:0 0 16px;color:#0d1f3c;font-family:system-ui,sans-serif">$1</h1>')
     .replace(/\*\*(.+?)\*\*/g, '<strong style="color:#1a4fd6;font-weight:700">$1</strong>')
-    .replace(/^---$/gm, '<hr style="border:none;border-top:1px solid #e2e8f0;margin:20px 0"/>')
-    .replace(/\n\n/g, "<br/><br/>")
-    .replace(/\n/g, "<br/>");
+    .replace(/^---$/gm,       '<hr style="border:none;border-top:1px solid #e2e8f0;margin:20px 0">')
+    .replace(/\n\n/g,         '<br><br>')
+    .replace(/\n/g,           '<br>');
 }
 
 function fmt(n) {
