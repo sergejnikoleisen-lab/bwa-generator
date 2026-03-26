@@ -7,13 +7,26 @@
     <meta name="keywords" content="BWA auswerten, Finanzreport erstellen, BWA Analyse, Betriebswirtschaftliche Auswertung, KI Finanzreport" />
     <title>BWA-Generator – KI-gestützte Finanzreports in Sekunden</title>
 
-    <!-- Google Analytics -->
+    <!-- Google Analytics mit Consent Mode -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-WKGP3FGXLB"></script>
     <script>
       window.dataLayer = window.dataLayer || [];
       function gtag(){dataLayer.push(arguments);}
+      
+      // Standard: Analytics deaktiviert bis Zustimmung
+      gtag('consent', 'default', {
+        analytics_storage: 'denied',
+        wait_for_update: 500
+      });
+
       gtag('js', new Date());
       gtag('config', 'G-WKGP3FGXLB');
+
+      // Falls bereits Zustimmung vorhanden
+      const consent = JSON.parse(localStorage.getItem('cookie_consent') || 'null');
+      if (consent && consent.analytics) {
+        gtag('consent', 'update', { analytics_storage: 'granted' });
+      }
     </script>
   </head>
   <body>
