@@ -1,5 +1,6 @@
 import { useState, useRef, useEffect } from "react";
 import * as XLSX from "xlsx";
+import CookieBanner from "./CookieBanner";
 
 const TONES = [
   { id: "professionell", label: "Professionell" },
@@ -377,6 +378,7 @@ Nutze **fett** für wichtige Zahlen und KPIs.` }];
 
   return (
     <div style={{ background: "#f0f4fb", minHeight: "100vh", fontFamily: "system-ui,sans-serif" }}>
+      <CookieBanner />
 
       {/* Nav */}
       <nav style={{ background: "#fff", borderBottom: "1px solid #e2e8f0", padding: "0 32px", display: "flex", alignItems: "center", justifyContent: "space-between", height: 60, position: "sticky", top: 0, zIndex: 100, boxShadow: "0 1px 0 #e2e8f0" }}>
