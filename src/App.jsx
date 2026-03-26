@@ -26,10 +26,10 @@ const REPORT_TYPES = ["Quartalsreport (kompakt)","Jahresabschluss (detailliert)"
 const CSS = `
   @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap');
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-  body { font-family: 'Inter', system-ui, sans-serif; background: #060912; color: #e2e8f0; }
+  body { font-family: 'Inter', system-ui, sans-serif; background: #0f0b1a; color: #e2e8f0; }
   ::-webkit-scrollbar { width: 6px; }
-  ::-webkit-scrollbar-track { background: #0d1117; }
-  ::-webkit-scrollbar-thumb { background: #1a4fd6; border-radius: 3px; }
+  ::-webkit-scrollbar-track { background: #1a1428; }
+  ::-webkit-scrollbar-thumb { background: #6d28d9; border-radius: 3px; }
 
   .glass {
     background: rgba(255,255,255,0.04);
@@ -40,18 +40,18 @@ const CSS = `
     transition: border-color 0.3s, box-shadow 0.3s, transform 0.3s;
   }
   .glass:hover {
-    border-color: rgba(99,137,255,0.35);
-    box-shadow: 0 8px 40px rgba(26,79,214,0.18), inset 0 1px 0 rgba(255,255,255,0.08);
+    border-color: rgba(167,139,250,0.35);
+    box-shadow: 0 8px 40px rgba(109,40,217,0.2), inset 0 1px 0 rgba(255,255,255,0.08);
   }
 
   .btn-primary {
     position: relative; overflow: hidden;
-    background: linear-gradient(135deg, #2563eb 0%, #1a4fd6 50%, #0a2d8a 100%);
+    background: linear-gradient(135deg, #7c3aed 0%, #6d28d9 50%, #4c1d95 100%);
     color: #fff; border: none; border-radius: 14px;
     font-family: 'Inter', sans-serif; font-weight: 700; font-size: 15px;
     cursor: pointer; letter-spacing: -0.01em;
     transition: transform 0.25s cubic-bezier(.34,1.56,.64,1), box-shadow 0.25s ease;
-    box-shadow: 0 4px 20px rgba(37,99,235,0.4), inset 0 1px 0 rgba(255,255,255,0.15);
+    box-shadow: 0 4px 20px rgba(124,58,237,0.4), inset 0 1px 0 rgba(255,255,255,0.15);
   }
   .btn-primary::before {
     content: ''; position: absolute; inset: 0;
@@ -60,11 +60,11 @@ const CSS = `
   }
   .btn-primary:hover:not(:disabled) {
     transform: translateY(-3px) scale(1.015);
-    box-shadow: 0 16px 48px rgba(37,99,235,0.55), inset 0 1px 0 rgba(255,255,255,0.2);
+    box-shadow: 0 16px 48px rgba(124,58,237,0.5), inset 0 1px 0 rgba(255,255,255,0.2);
   }
   .btn-primary:hover:not(:disabled)::before { opacity: 1; }
   .btn-primary:active:not(:disabled) { transform: translateY(-1px) scale(0.99); }
-  .btn-primary:disabled { background: #1e2535; color: #4a5568; box-shadow: none; cursor: not-allowed; }
+  .btn-primary:disabled { background: #1a1428; color: #4a5568; box-shadow: none; cursor: not-allowed; }
 
   .btn-success {
     position: relative; overflow: hidden;
@@ -86,7 +86,7 @@ const CSS = `
   }
   .btn-success:hover:not(:disabled)::before { opacity: 1; }
   .btn-success:active:not(:disabled) { transform: translateY(-1px) scale(0.99); }
-  .btn-success:disabled { background: #1e2535; color: #4a5568; box-shadow: none; cursor: not-allowed; }
+  .btn-success:disabled { background: #1a1428; color: #4a5568; box-shadow: none; cursor: not-allowed; }
 
   .mode-tab {
     position: relative; overflow: hidden;
@@ -97,12 +97,12 @@ const CSS = `
   }
   .mode-tab::before {
     content: ''; position: absolute; inset: 0; border-radius: 18px;
-    background: linear-gradient(135deg, rgba(37,99,235,0.12), transparent);
+    background: linear-gradient(135deg, rgba(124,58,237,0.12), transparent);
     opacity: 0; transition: opacity 0.3s;
   }
-  .mode-tab:hover { transform: translateY(-5px) scale(1.01); box-shadow: 0 20px 60px rgba(0,0,0,0.4), 0 0 0 1px rgba(99,137,255,0.3); border-color: rgba(99,137,255,0.3); }
+  .mode-tab:hover { transform: translateY(-5px) scale(1.01); box-shadow: 0 20px 60px rgba(0,0,0,0.4), 0 0 0 1px rgba(167,139,250,0.3); border-color: rgba(167,139,250,0.3); }
   .mode-tab:hover::before { opacity: 1; }
-  .mode-tab-active { background: rgba(37,99,235,0.12); border: 1.5px solid rgba(99,137,255,0.5); box-shadow: 0 8px 32px rgba(37,99,235,0.2), inset 0 1px 0 rgba(255,255,255,0.08); }
+  .mode-tab-active { background: rgba(124,58,237,0.12); border: 1.5px solid rgba(99,137,255,0.5); box-shadow: 0 8px 32px rgba(124,58,237,0.2), inset 0 1px 0 rgba(255,255,255,0.08); }
 
   .tone-btn {
     border-radius: 10px; padding: 9px 18px; font-size: 13px;
@@ -111,40 +111,40 @@ const CSS = `
     background: rgba(255,255,255,0.04); color: #94a3b8;
     transition: transform 0.2s cubic-bezier(.34,1.56,.64,1), box-shadow 0.2s, background 0.2s, color 0.2s, border-color 0.2s;
   }
-  .tone-btn:hover { transform: translateY(-2px) scale(1.05); box-shadow: 0 8px 24px rgba(37,99,235,0.25); border-color: rgba(99,137,255,0.4); color: #fff; }
-  .tone-btn-active { background: linear-gradient(135deg,#2563eb,#1a4fd6) !important; color: #fff !important; border-color: transparent !important; box-shadow: 0 4px 16px rgba(37,99,235,0.4) !important; }
+  .tone-btn:hover { transform: translateY(-2px) scale(1.05); box-shadow: 0 8px 24px rgba(124,58,237,0.25); border-color: rgba(167,139,250,0.4); color: #fff; }
+  .tone-btn-active { background: linear-gradient(135deg,#7c3aed,#6d28d9) !important; color: #fff !important; border-color: transparent !important; box-shadow: 0 4px 16px rgba(124,58,237,0.4) !important; }
 
   .kpi-box {
     background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.08);
     border-radius: 14px; padding: 14px;
     transition: all 0.25s cubic-bezier(.34,1.56,.64,1);
   }
-  .kpi-box:hover, .kpi-box:focus-within { border-color: rgba(99,137,255,0.45); background: rgba(37,99,235,0.1); box-shadow: 0 8px 24px rgba(37,99,235,0.2); transform: translateY(-2px); }
+  .kpi-box:hover, .kpi-box:focus-within { border-color: rgba(167,139,250,0.45); background: rgba(124,58,237,0.12); box-shadow: 0 8px 24px rgba(124,58,237,0.2); transform: translateY(-2px); }
 
   .output-card { background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.09); border-radius: 20px; overflow: hidden; margin-top: 20px; box-shadow: 0 8px 40px rgba(0,0,0,0.4); animation: fadeInUp 0.45s cubic-bezier(.34,1.56,.64,1) forwards; }
 
   .copy-btn { background: rgba(255,255,255,0.07); border: 1px solid rgba(255,255,255,0.15); border-radius: 9px; padding: 6px 14px; font-size: 12px; color: #cbd5e1; cursor: pointer; font-family: 'Inter', sans-serif; transition: all 0.2s cubic-bezier(.34,1.56,.64,1); }
   .copy-btn:hover { background: rgba(255,255,255,0.14); transform: translateY(-2px); color: #fff; }
 
-  .pdf-btn { background: rgba(37,99,235,0.2); border: 1px solid rgba(99,137,255,0.35); border-radius: 9px; padding: 6px 14px; font-size: 12px; color: #93b4f8; cursor: pointer; font-family: 'Inter', sans-serif; font-weight: 700; transition: all 0.2s cubic-bezier(.34,1.56,.64,1); }
-  .pdf-btn:hover { background: rgba(37,99,235,0.4); transform: translateY(-2px); box-shadow: 0 8px 20px rgba(37,99,235,0.35); }
+  .pdf-btn { background: rgba(124,58,237,0.2); border: 1px solid rgba(167,139,250,0.35); border-radius: 9px; padding: 6px 14px; font-size: 12px; color: #ddd6fe; cursor: pointer; font-family: 'Inter', sans-serif; font-weight: 700; transition: all 0.2s cubic-bezier(.34,1.56,.64,1); }
+  .pdf-btn:hover { background: rgba(124,58,237,0.4); transform: translateY(-2px); box-shadow: 0 8px 20px rgba(124,58,237,0.35); }
 
   .tag-btn { background: rgba(251,191,36,0.1); border: 1px solid rgba(251,191,36,0.3); border-radius: 100px; padding: 5px 14px; font-size: 12px; color: #fbbf24; cursor: pointer; font-family: 'Inter', sans-serif; font-weight: 600; transition: all 0.2s cubic-bezier(.34,1.56,.64,1); }
   .tag-btn:hover { background: rgba(251,191,36,0.2); transform: translateY(-2px) scale(1.06); box-shadow: 0 6px 16px rgba(251,191,36,0.25); }
 
-  .footer-link { color: #4a7fd4; text-decoration: none; font-weight: 500; font-size: 13px; transition: all 0.2s; display: inline-block; font-family: 'Inter', sans-serif; padding-bottom: 1px; border-bottom: 1px solid transparent; }
-  .footer-link:hover { color: #93b4f8; border-bottom-color: #93b4f8; transform: translateY(-1px); }
+  .footer-link { color: #9d7fea; text-decoration: none; font-weight: 500; font-size: 13px; transition: all 0.2s; display: inline-block; font-family: 'Inter', sans-serif; padding-bottom: 1px; border-bottom: 1px solid transparent; }
+  .footer-link:hover { color: #ddd6fe; border-bottom-color: #ddd6fe; transform: translateY(-1px); }
 
-  .upsell-btn { background: linear-gradient(135deg,#2563eb,#1a4fd6); border: none; border-radius: 10px; padding: 9px 18px; font-size: 12px; color: #fff; cursor: pointer; font-family: 'Inter', sans-serif; font-weight: 700; white-space: nowrap; transition: all 0.25s cubic-bezier(.34,1.56,.64,1); box-shadow: 0 4px 14px rgba(37,99,235,0.35); }
-  .upsell-btn:hover { transform: translateY(-2px) scale(1.05); box-shadow: 0 10px 28px rgba(37,99,235,0.5); }
+  .upsell-btn { background: linear-gradient(135deg,#7c3aed,#6d28d9); border: none; border-radius: 10px; padding: 9px 18px; font-size: 12px; color: #fff; cursor: pointer; font-family: 'Inter', sans-serif; font-weight: 700; white-space: nowrap; transition: all 0.25s cubic-bezier(.34,1.56,.64,1); box-shadow: 0 4px 14px rgba(124,58,237,0.35); }
+  .upsell-btn:hover { transform: translateY(-2px) scale(1.05); box-shadow: 0 10px 28px rgba(124,58,237,0.45); }
 
   select, input, textarea { font-family: 'Inter', sans-serif !important; background: rgba(255,255,255,0.04) !important; color: #e2e8f0 !important; border: 1px solid rgba(255,255,255,0.1) !important; border-radius: 10px !important; transition: border-color 0.2s, box-shadow 0.2s, background 0.2s !important; }
-  select option { background: #0d1117; color: #e2e8f0; }
-  select:focus, input:focus, textarea:focus { outline: none !important; border-color: rgba(99,137,255,0.6) !important; box-shadow: 0 0 0 3px rgba(37,99,235,0.15) !important; background: rgba(37,99,235,0.07) !important; }
+  select option { background: #1a1428; color: #e2e8f0; }
+  select:focus, input:focus, textarea:focus { outline: none !important; border-color: rgba(167,139,250,0.6) !important; box-shadow: 0 0 0 3px rgba(124,58,237,0.15) !important; background: rgba(124,58,237,0.08) !important; }
   input::placeholder, textarea::placeholder { color: #4a5568 !important; }
 
-  .drag-zone { border: 2px dashed rgba(99,137,255,0.25); border-radius: 16px; padding: 48px 20px; text-align: center; cursor: pointer; background: rgba(37,99,235,0.03); transition: all 0.25s ease; }
-  .drag-zone:hover, .drag-zone-active { border-color: rgba(99,137,255,0.6); background: rgba(37,99,235,0.08); box-shadow: inset 0 0 40px rgba(37,99,235,0.06); }
+  .drag-zone { border: 2px dashed rgba(167,139,250,0.3); border-radius: 16px; padding: 48px 20px; text-align: center; cursor: pointer; background: rgba(37,99,235,0.03); transition: all 0.25s ease; }
+  .drag-zone:hover, .drag-zone-active { border-color: rgba(167,139,250,0.6); background: rgba(124,58,237,0.1); box-shadow: inset 0 0 40px rgba(124,58,237,0.07); }
 
   .orb { position: absolute; border-radius: 50%; filter: blur(80px); pointer-events: none; z-index: 0; }
 
@@ -153,7 +153,7 @@ const CSS = `
   @keyframes pulse { 0%,100% { opacity: 1; transform: scale(1); } 50% { opacity: 0.4; transform: scale(0.75); } }
   .pulse { animation: pulse 2s infinite; }
   @keyframes shimmer { 0% { background-position: -200% center; } 100% { background-position: 200% center; } }
-  .shimmer-text { background: linear-gradient(90deg, #93b4f8 0%, #fff 40%, #93b4f8 60%, #60a5fa 100%); background-size: 200% auto; -webkit-background-clip: text; -webkit-text-fill-color: transparent; animation: shimmer 4s linear infinite; }
+  .shimmer-text { background: linear-gradient(90deg, #ddd6fe 0%, #fff 40%, #ddd6fe 60%, #c4b5fd 100%); background-size: 200% auto; -webkit-background-clip: text; -webkit-text-fill-color: transparent; animation: shimmer 4s linear infinite; }
   @keyframes float { 0%,100% { transform: translateY(0px); } 50% { transform: translateY(-8px); } }
 `;
 
@@ -162,7 +162,7 @@ function renderMd(text) {
     .replace(/^### (.+)$/gm, '<h3 style="font-size:12px;font-weight:700;margin:22px 0 8px;color:#6699ff;text-transform:uppercase;letter-spacing:0.1em;font-family:Inter,sans-serif">$1</h3>')
     .replace(/^## (.+)$/gm,  '<h2 style="font-size:18px;font-weight:700;margin:28px 0 12px;color:#e2e8f0;border-bottom:1px solid rgba(255,255,255,0.08);padding-bottom:10px;font-family:Inter,sans-serif">$1</h2>')
     .replace(/^# (.+)$/gm,   '<h1 style="font-size:24px;font-weight:800;margin:0 0 18px;color:#fff;font-family:Inter,sans-serif;letter-spacing:-0.03em">$1</h1>')
-    .replace(/\*\*(.+?)\*\*/g, '<strong style="color:#60a5fa;font-weight:700">$1</strong>')
+    .replace(/\*\*(.+?)\*\*/g, '<strong style="color:#c4b5fd;font-weight:700">$1</strong>')
     .replace(/^---$/gm, '<hr style="border:none;border-top:1px solid rgba(255,255,255,0.08);margin:24px 0"/>')
     .replace(/\n\n/g, "<br/><br/>")
     .replace(/\n/g, "<br/>");
@@ -293,36 +293,36 @@ export default function App() {
   return(
     <>
       <style>{CSS}</style>
-      <div style={{background:"#060912",minHeight:"100vh",position:"relative",overflow:"hidden"}}>
+      <div style={{background:"#0f0b1a",minHeight:"100vh",position:"relative",overflow:"hidden"}}>
 
-        <div className="orb" style={{width:600,height:600,background:"radial-gradient(circle,rgba(37,99,235,0.12),transparent 70%)",top:-200,left:-100}}/>
-        <div className="orb" style={{width:500,height:500,background:"radial-gradient(circle,rgba(99,37,235,0.08),transparent 70%)",top:200,right:-150}}/>
-        <div className="orb" style={{width:400,height:400,background:"radial-gradient(circle,rgba(37,99,235,0.06),transparent 70%)",bottom:100,left:"30%"}}/>
+        <div className="orb" style={{width:600,height:600,background:"radial-gradient(circle,rgba(124,58,237,0.12),transparent 70%)",top:-200,left:-100}}/>
+        <div className="orb" style={{width:500,height:500,background:"radial-gradient(circle,rgba(109,40,217,0.1),transparent 70%)",top:200,right:-150}}/>
+        <div className="orb" style={{width:400,height:400,background:"radial-gradient(circle,rgba(124,58,237,0.07),transparent 70%)",bottom:100,left:"30%"}}/>
 
         <CookieBanner/>
 
-        <nav style={{background:"rgba(6,9,18,0.85)",borderBottom:"1px solid rgba(255,255,255,0.07)",padding:"0 32px",display:"flex",alignItems:"center",justifyContent:"space-between",height:62,position:"sticky",top:0,zIndex:100,backdropFilter:"blur(20px)",WebkitBackdropFilter:"blur(20px)"}}>
+        <nav style={{background:"rgba(15,11,26,0.85)",borderBottom:"1px solid rgba(255,255,255,0.07)",padding:"0 32px",display:"flex",alignItems:"center",justifyContent:"space-between",height:62,position:"sticky",top:0,zIndex:100,backdropFilter:"blur(20px)",WebkitBackdropFilter:"blur(20px)"}}>
           <div style={{display:"flex",alignItems:"center",gap:10,position:"relative",zIndex:1}}>
-            <div style={{width:36,height:36,background:"linear-gradient(135deg,#2563eb,#1a4fd6)",borderRadius:10,display:"flex",alignItems:"center",justifyContent:"center",color:"#fff",fontSize:17,fontWeight:800,boxShadow:"0 4px 16px rgba(37,99,235,0.5)"}}>B</div>
-            <span style={{fontFamily:"'Inter',sans-serif",fontWeight:800,fontSize:17,color:"#fff",letterSpacing:"-0.04em"}}>BWA<span style={{color:"#3b82f6"}}>-</span>Generator</span>
+            <div style={{width:36,height:36,background:"linear-gradient(135deg,#7c3aed,#6d28d9)",borderRadius:10,display:"flex",alignItems:"center",justifyContent:"center",color:"#fff",fontSize:17,fontWeight:800,boxShadow:"0 4px 16px rgba(124,58,237,0.45)"}}>B</div>
+            <span style={{fontFamily:"'Inter',sans-serif",fontWeight:800,fontSize:17,color:"#fff",letterSpacing:"-0.04em"}}>BWA<span style={{color:"#a78bfa"}}>-</span>Generator</span>
           </div>
           <div style={{display:"flex",alignItems:"center",gap:20,position:"relative",zIndex:1}}>
             <div style={{fontSize:13,color:"#64748b",fontFamily:"'Inter',sans-serif"}}>
               Manuell: <strong style={{color:"#4ade80"}}>Kostenlos</strong>
-              <span style={{margin:"0 10px",color:"#1e2535"}}>·</span>
-              Upload: <strong style={{color:"#60a5fa"}}>19,00 €</strong>
+              <span style={{margin:"0 10px",color:"#1a1428"}}>·</span>
+              Upload: <strong style={{color:"#c4b5fd"}}>19,00 €</strong>
             </div>
-            <div style={{display:"flex",alignItems:"center",gap:6,background:"rgba(37,99,235,0.12)",border:"1px solid rgba(99,137,255,0.25)",borderRadius:100,padding:"5px 14px"}}>
-              <span className="pulse" style={{width:6,height:6,background:"#3b82f6",borderRadius:"50%",display:"inline-block"}}></span>
-              <span style={{fontSize:11,color:"#60a5fa",fontFamily:"monospace",letterSpacing:"0.08em",fontWeight:600}}>KI AKTIV</span>
+            <div style={{display:"flex",alignItems:"center",gap:6,background:"rgba(124,58,237,0.12)",border:"1px solid rgba(167,139,250,0.3)",borderRadius:100,padding:"5px 14px"}}>
+              <span className="pulse" style={{width:6,height:6,background:"#a78bfa",borderRadius:"50%",display:"inline-block"}}></span>
+              <span style={{fontSize:11,color:"#c4b5fd",fontFamily:"monospace",letterSpacing:"0.08em",fontWeight:600}}>KI AKTIV</span>
             </div>
           </div>
         </nav>
 
         <div style={{padding:"72px 20px 64px",textAlign:"center",position:"relative",zIndex:1}}>
           <div style={{position:"relative",zIndex:1,maxWidth:700,margin:"0 auto"}}>
-            <div style={{display:"inline-flex",alignItems:"center",gap:8,background:"rgba(37,99,235,0.12)",border:"1px solid rgba(99,137,255,0.25)",borderRadius:100,padding:"7px 18px",fontSize:11,color:"#93b4f8",letterSpacing:"0.12em",textTransform:"uppercase",fontFamily:"monospace",marginBottom:28}}>
-              <span style={{width:5,height:5,background:"#3b82f6",borderRadius:"50%",display:"inline-block"}}></span>
+            <div style={{display:"inline-flex",alignItems:"center",gap:8,background:"rgba(124,58,237,0.12)",border:"1px solid rgba(167,139,250,0.3)",borderRadius:100,padding:"7px 18px",fontSize:11,color:"#ddd6fe",letterSpacing:"0.12em",textTransform:"uppercase",fontFamily:"monospace",marginBottom:28}}>
+              <span style={{width:5,height:5,background:"#a78bfa",borderRadius:"50%",display:"inline-block"}}></span>
               Powered by Claude AI
             </div>
             <h1 style={{fontFamily:"'Inter',sans-serif",fontSize:"clamp(32px,5.5vw,58px)",fontWeight:900,color:"#fff",margin:"0 0 8px",letterSpacing:"-0.05em",lineHeight:1.0}}>Professionelle</h1>
@@ -338,7 +338,7 @@ export default function App() {
               </span>
             </div>
             <div style={{display:"flex",justifyContent:"center",gap:24,flexWrap:"wrap"}}>
-              {[["✓","BWA Upload mit PDF-Download","#60a5fa"],["✓","Manuelle Eingabe kostenlos","#4ade80"],["✓","5 Berichtstypen & Töne","#a78bfa"],["✓","Ergebnis in unter 30 Sekunden","#fb923c"]].map(([icon,text,color])=>(
+              {[["✓","BWA Upload mit PDF-Download","#c4b5fd"],["✓","Manuelle Eingabe kostenlos","#4ade80"],["✓","5 Berichtstypen & Töne","#a78bfa"],["✓","Ergebnis in unter 30 Sekunden","#fb923c"]].map(([icon,text,color])=>(
                 <div key={text} style={{display:"flex",alignItems:"center",gap:7,fontSize:13,fontFamily:"'Inter',sans-serif",fontWeight:500}}>
                   <span style={{fontWeight:800,color}}>{icon}</span><span style={{color:"#94a3b8"}}>{text}</span>
                 </div>
@@ -351,7 +351,7 @@ export default function App() {
 
           <div style={{display:"grid",gridTemplateColumns:"1fr 1fr",gap:14,marginBottom:20}}>
             {[
-              {id:"upload",icon:"📂",title:"BWA hochladen",sub:"PDF, Excel, CSV",badge:"19,00 €",badgeColor:"#60a5fa",badgeBg:"rgba(37,99,235,0.15)"},
+              {id:"upload",icon:"📂",title:"BWA hochladen",sub:"PDF, Excel, CSV",badge:"19,00 €",badgeColor:"#c4b5fd",badgeBg:"rgba(124,58,237,0.15)"},
               {id:"manual",icon:"✏️",title:"Manuell eingeben",sub:"Zahlen direkt eintragen",badge:"Kostenlos",badgeColor:"#4ade80",badgeBg:"rgba(34,197,94,0.12)"}
             ].map(({id,icon,title,sub,badge,badgeColor,badgeBg})=>(
               <button key={id} className={`mode-tab ${mode===id?"mode-tab-active":""}`}
@@ -370,7 +370,7 @@ export default function App() {
             <div className="glass" style={{padding:24,marginBottom:16}}>
               <div style={{display:"flex",alignItems:"center",justifyContent:"space-between",marginBottom:18}}>
                 <div style={{fontSize:11,fontFamily:"monospace",letterSpacing:"0.1em",textTransform:"uppercase",color:"#475569"}}>BWA-Datei hochladen</div>
-                <div style={{fontSize:12,color:"#60a5fa",fontWeight:600,fontFamily:"'Inter',sans-serif"}}>📄 Inkl. PDF-Download nach Zahlung</div>
+                <div style={{fontSize:12,color:"#c4b5fd",fontWeight:600,fontFamily:"'Inter',sans-serif"}}>📄 Inkl. PDF-Download nach Zahlung</div>
               </div>
               {!fileName?(
                 <div className={`drag-zone ${dragOver?"drag-zone-active":""}`}
@@ -379,17 +379,17 @@ export default function App() {
                   <div style={{fontSize:16,fontWeight:700,color:"#e2e8f0",marginBottom:6,fontFamily:"'Inter',sans-serif"}}>BWA hier ablegen oder klicken</div>
                   <div style={{fontSize:13,color:"#475569",marginBottom:18,fontFamily:"'Inter',sans-serif"}}>KI erkennt automatisch alle Kennzahlen</div>
                   <div style={{display:"flex",justifyContent:"center",gap:8}}>
-                    {[["PDF","#f87171"],["XLSX","#4ade80"],["XLS","#60a5fa"],["CSV","#fb923c"]].map(([f,c])=>(
+                    {[["PDF","#f87171"],["XLSX","#4ade80"],["XLS","#c4b5fd"],["CSV","#fb923c"]].map(([f,c])=>(
                       <span key={f} style={{background:`${c}15`,border:`1px solid ${c}40`,borderRadius:8,padding:"5px 13px",fontSize:11,color:c,fontFamily:"monospace",fontWeight:700}}>{f}</span>
                     ))}
                   </div>
                   <input ref={fileRef} type="file" accept=".pdf,.xlsx,.xls,.csv" style={{display:"none"}} onChange={e=>handleFile(e.target.files[0])}/>
                 </div>
               ):(
-                <div style={{display:"flex",alignItems:"center",gap:12,background:"rgba(37,99,235,0.1)",border:"1px solid rgba(99,137,255,0.25)",borderRadius:14,padding:"14px 18px"}}>
+                <div style={{display:"flex",alignItems:"center",gap:12,background:"rgba(124,58,237,0.12)",border:"1px solid rgba(167,139,250,0.3)",borderRadius:14,padding:"14px 18px"}}>
                   <span style={{fontSize:28}}>{fileName.endsWith(".pdf")?"📄":"📊"}</span>
                   <div style={{flex:1}}>
-                    <div style={{fontSize:14,fontWeight:700,color:"#60a5fa",fontFamily:"'Inter',sans-serif"}}>{fileName}</div>
+                    <div style={{fontSize:14,fontWeight:700,color:"#c4b5fd",fontFamily:"'Inter',sans-serif"}}>{fileName}</div>
                     <div style={{fontSize:12,color:"#475569",marginTop:3,fontFamily:"'Inter',sans-serif"}}>✓ {status}</div>
                   </div>
                   <button onClick={resetFile} style={{background:"rgba(255,255,255,0.06)",border:"1px solid rgba(255,255,255,0.1)",borderRadius:8,padding:"6px 13px",fontSize:12,color:"#64748b",cursor:"pointer",fontFamily:"'Inter',sans-serif"}}>✕</button>
@@ -522,7 +522,7 @@ export default function App() {
           </div>
 
           {status&&!loading&&(
-            <div style={{background:"rgba(37,99,235,0.1)",border:"1px solid rgba(99,137,255,0.25)",borderRadius:12,padding:"12px 18px",marginTop:12,fontSize:13,color:"#60a5fa",fontFamily:"'Inter',sans-serif"}}>{status}</div>
+            <div style={{background:"rgba(124,58,237,0.12)",border:"1px solid rgba(167,139,250,0.3)",borderRadius:12,padding:"12px 18px",marginTop:12,fontSize:13,color:"#c4b5fd",fontFamily:"'Inter',sans-serif"}}>{status}</div>
           )}
 
           {(loading||report)&&(
@@ -543,7 +543,7 @@ export default function App() {
               </div>
               {loading&&(
                 <div style={{padding:"32px 28px",color:"#475569",fontSize:14,display:"flex",alignItems:"center",gap:12,fontFamily:"'Inter',sans-serif"}}>
-                  <span className="pulse" style={{width:8,height:8,background:"#3b82f6",borderRadius:"50%",display:"inline-block"}}></span>
+                  <span className="pulse" style={{width:8,height:8,background:"#a78bfa",borderRadius:"50%",display:"inline-block"}}></span>
                   KI analysiert und verfasst Report...
                 </div>
               )}
@@ -551,10 +551,10 @@ export default function App() {
                 <>
                   <div style={{padding:"32px 36px 36px",fontSize:15,lineHeight:1.9,fontFamily:"Georgia,serif",color:"#cbd5e1"}} dangerouslySetInnerHTML={{__html:renderMd(report)}}/>
                   {!isUpload&&(
-                    <div style={{margin:"0 32px 28px",background:"rgba(37,99,235,0.08)",border:"1px dashed rgba(99,137,255,0.25)",borderRadius:14,padding:"16px 20px",display:"flex",alignItems:"center",gap:14}}>
+                    <div style={{margin:"0 32px 28px",background:"rgba(124,58,237,0.1)",border:"1px dashed rgba(167,139,250,0.3)",borderRadius:14,padding:"16px 20px",display:"flex",alignItems:"center",gap:14}}>
                       <span style={{fontSize:22}}>📄</span>
                       <div style={{flex:1}}>
-                        <div style={{fontSize:13,fontWeight:700,color:"#60a5fa",fontFamily:"'Inter',sans-serif",marginBottom:2}}>PDF-Download verfügbar</div>
+                        <div style={{fontSize:13,fontWeight:700,color:"#c4b5fd",fontFamily:"'Inter',sans-serif",marginBottom:2}}>PDF-Download verfügbar</div>
                         <div style={{fontSize:12,color:"#475569",fontFamily:"'Inter',sans-serif"}}>Lade deine BWA hoch (19,00 €) um den Report als PDF herunterzuladen.</div>
                       </div>
                       <button className="upsell-btn" onClick={()=>{setMode("upload");setReport("");}}>BWA hochladen →</button>
@@ -566,7 +566,7 @@ export default function App() {
           )}
         </div>
 
-        <div style={{borderTop:"1px solid rgba(255,255,255,0.06)",background:"rgba(6,9,18,0.8)",padding:"28px 32px",textAlign:"center",position:"relative",zIndex:1,backdropFilter:"blur(20px)"}}>
+        <div style={{borderTop:"1px solid rgba(255,255,255,0.06)",background:"rgba(15,11,26,0.8)",padding:"28px 32px",textAlign:"center",position:"relative",zIndex:1,backdropFilter:"blur(20px)"}}>
           <p style={{fontSize:12,color:"#334155",fontFamily:"'Inter',sans-serif",margin:"0 0 12px"}}>© 2026 Sergej Nikoleisen · BWA-Generator</p>
           <div style={{display:"flex",justifyContent:"center",gap:28,flexWrap:"wrap"}}>
             <a href="/impressum" className="footer-link">Impressum</a>
