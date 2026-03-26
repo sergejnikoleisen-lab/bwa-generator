@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
-import App from './App';
+import App from './App-v2.jsx';
 import Impressum from './Impressum';
 import AGB from './AGB';
 
